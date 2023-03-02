@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  isLoading = false
 
-  constructor() {}
 
+  paragraph: string = 'Texto sin cambiar'
+
+  constructor(private renderer: Renderer2) {}
+
+  onClickButton(){
+    this.paragraph = 'Texto cambiado'
+    this.isLoading = !this.isLoading
+  }
+
+  onToggleClick(event: any){
+
+    if (event.detail.checked){
+      this.renderer.setAttribute(document.body, 'color-theme','dark')
+    }else{
+      this.renderer.removeAttribute(document.body,'color-theme')
+    }
+
+    console.log(event )
+  }
 }
