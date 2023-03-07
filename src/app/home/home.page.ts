@@ -1,4 +1,5 @@
 import {Component, Renderer2} from '@angular/core';
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,21 @@ export class HomePage {
 
   paragraph: string = 'Texto sin cambiar'
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private toastController: ToastController) {
+    this.renderer.setAttribute(document.body, 'color-theme','dark')
+  }
 
-  onClickButton(){
+  async onClickAddButton(){
     this.paragraph = 'Texto cambiado'
     this.isLoading = !this.isLoading
+    // ion-toast
+    const toast = await this.toastController.create({
+      message: 'product added',
+      duration: 1500,
+      position: "bottom"
+    })
+
+    await toast.present();
   }
 
   onToggleClick(event: any){
@@ -28,4 +39,6 @@ export class HomePage {
 
     console.log(event )
   }
+
+
 }

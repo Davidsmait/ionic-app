@@ -1,101 +1,110 @@
-<ion-header *ngIf="isLoading">
-  <ion-toolbar >
-    <ion-title>Toolbar</ion-title>
-    <ion-progress-bar type="indeterminate"></ion-progress-bar>
-  </ion-toolbar>
-</ion-header>
-<ion-header>
-  <ion-toolbar >
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>App</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu type="push" content-id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>This is the content</ion-content>
+</ion-menu>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label slot="end"><ion-icon name="contrast-outline"></ion-icon></ion-label>
-          <ion-toggle [enableOnOffLabels]="true" slot="end" (ionChange)="onToggleClick($event)"></ion-toggle>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
+<div class="ion-page" id="main-content">
+  <ion-header *ngIf="isLoading">
+    <ion-toolbar >
+      <ion-title>Toolbar</ion-title>
+      <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-header>
+    <ion-toolbar >
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/form']">
+          <ion-icon name="log-in-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/list-item']">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>App</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-          <ion-card-content>
-            Here's a small text description.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-
-          <ion-card-content>
-            Here's a small text description.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-list>
+  <ion-content [fullscreen]="true">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
           <ion-item>
-            <ion-label position="floating">Name</ion-label>
-            <ion-input placeholder="Enter name" clear-input="true"></ion-input>
+            <ion-label slot="end"><ion-icon name="contrast-outline"></ion-icon></ion-label>
+            <ion-toggle [checked]="true" [enableOnOffLabels]="true" slot="end" (ionChange)="onToggleClick($event)"></ion-toggle>
           </ion-item>
-          <ion-item>
-            <ion-label position="floating">Amount</ion-label>
-            <ion-input placeholder="Enter amount" type="number" clear-input="true" ></ion-input>
-            <ion-note slot="helper">Enter a number</ion-note>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
 
-    <ion-row>
-      <ion-col>
-        <div class="ion-text-center">
-          <ion-button color="danger" fill="outline" >
-            <ion-icon slot="start" name="close-outline"></ion-icon>Clear
-          </ion-button>
+            <ion-card-content>
+              Here's a small text description.
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
 
-          <ion-button (click)="onClickButton()" class="ion-margin-horizontal">
-            <ion-icon name="add-outline" slot="start"></ion-icon>Add
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+            <ion-card-content>
+              Here's a small text description.
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
 
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Name</ion-label>
+              <ion-input placeholder="Enter name" clear-input="true"></ion-input>
+              <ion-note slot="helper">Enter a product name</ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Amount</ion-label>
+              <ion-input placeholder="Enter amount" type="number" clear-input="true" ></ion-input>
+              <ion-note slot="helper">Enter a number</ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
 
+      <ion-row>
+        <ion-col>
+          <div class="ion-text-center">
+            <ion-button color="danger" fill="outline" >
+              <ion-icon slot="start" name="close-outline"></ion-icon>Clear
+            </ion-button>
 
-</ion-content>
+            <ion-button (click)="onClickAddButton()" class="ion-margin-horizontal">
+              <ion-icon name="add-outline" slot="start"></ion-icon>Add
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</div>
 
 
 
