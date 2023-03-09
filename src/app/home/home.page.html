@@ -4,7 +4,12 @@
       <ion-title>Menu Content</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>This is the content</ion-content>
+  <ion-content>
+    <ion-item>
+      <ion-label slot="end"><ion-icon name="contrast-outline"></ion-icon></ion-label>
+      <ion-toggle [checked]="true" [enableOnOffLabels]="true" slot="end" (ionChange)="onToggleClick($event)"></ion-toggle>
+    </ion-item>
+  </ion-content>
 </ion-menu>
 
 <div class="ion-page" id="main-content">
@@ -35,14 +40,6 @@
 
   <ion-content [fullscreen]="true">
     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label slot="end"><ion-icon name="contrast-outline"></ion-icon></ion-label>
-            <ion-toggle [checked]="true" [enableOnOffLabels]="true" slot="end" (ionChange)="onToggleClick($event)"></ion-toggle>
-          </ion-item>
-        </ion-col>
-      </ion-row>
       <ion-row>
         <ion-col>
           <ion-card>
