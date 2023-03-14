@@ -9,6 +9,15 @@
       <ion-label slot="end"><ion-icon name="contrast-outline"></ion-icon></ion-label>
       <ion-toggle [checked]="true" [enableOnOffLabels]="true" slot="end" (ionChange)="onToggleClick($event)"></ion-toggle>
     </ion-item>
+    <ion-item>
+      Take product photo
+      <ion-button
+        slot="end"
+        size="large"
+        [routerLink]="['/camera']">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-content>
 </ion-menu>
 

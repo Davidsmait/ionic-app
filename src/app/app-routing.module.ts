@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'list-item',
     loadChildren: () => import('./list-item/list-item.module').then( m => m.ListItemPageModule)
   },
+  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
+  },
 
 
 
