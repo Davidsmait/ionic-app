@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
 import {PhotoService} from "../services/photo.service";
-import {log} from "@capacitor/assets/dist/util/log";
 
 
 const IMAGE_DIR = 'stored-images'
@@ -25,7 +23,24 @@ export class CameraPage implements OnInit {
 
   async takePicture(){
     await this.photoService.addNewToGallery()
-      .then(image => this.imageUrl = image.webPath)
+
+    // ONLY TEST CODE
+    // async function getData(){
+    //   try {
+    //     const response = await fetch("http://worldtimeapi.org/api/timezone/America/Mexico_City");
+    //     const data = await response.json();
+    //     console.log(data)
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    //
+    // }
+    //
+    // await getData()
+
+
   }
+
+
 
 }

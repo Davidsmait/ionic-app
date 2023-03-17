@@ -13,7 +13,6 @@ export class HomePage {
   paragraph: string = 'Texto sin cambiar'
 
   constructor(private renderer: Renderer2, private toastController: ToastController) {
-    this.renderer.setAttribute(document.body, 'color-theme','dark')
   }
 
   async onClickAddButton(){
@@ -36,8 +35,6 @@ export class HomePage {
     }else{
       this.renderer.removeAttribute(document.body,'color-theme')
     }
-
-    console.log(event )
   }
 
 
