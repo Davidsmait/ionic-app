@@ -1,5 +1,10 @@
 import {Component, Renderer2} from '@angular/core';
 import {ToastController} from "@ionic/angular";
+import {log} from "@capacitor/assets/dist/util/log";
+import {NgForm} from "@angular/forms";
+import {DescriptionCardModel} from "../interfaces/description-card.model";
+
+
 
 @Component({
   selector: 'app-home',
@@ -7,6 +12,12 @@ import {ToastController} from "@ionic/angular";
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  descriptionCards : DescriptionCardModel[] = []
+  descriptionCard = {
+    name: '',
+    description: '',
+    source: '../../assets/images/bus_talk_joking.jpg'
+  }
   isLoading = false
 
 
@@ -37,5 +48,11 @@ export class HomePage {
     }
   }
 
+  onSubmit(form: NgForm){
+    // console.log(form.form.value)
+    const descriptionCardForm = form.value
+    this.descriptionCards.push(descriptionCardForm)
+
+  }
 
 }

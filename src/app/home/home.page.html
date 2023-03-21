@@ -23,10 +23,11 @@
 
 <div class="ion-page" id="main-content">
   <ion-header *ngIf="isLoading">
-    <ion-toolbar >
-      <ion-title>Toolbar</ion-title>
-      <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    </ion-toolbar>
+<!--    LOADER-->
+<!--    <ion-toolbar >-->
+<!--      <ion-title>Toolbar</ion-title>-->
+<!--      <ion-progress-bar type="indeterminate"></ion-progress-bar>-->
+<!--    </ion-toolbar>-->
   </ion-header>
   <ion-header>
     <ion-toolbar >
@@ -49,65 +50,81 @@
 
   <ion-content [fullscreen]="true">
     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-card>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-            <ion-card-header>
-              <ion-card-title>Card Title</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            </ion-card-header>
+      <ion-col size="6" >
+        <ion-card>
+          <ion-img  alt="live image" [src]="descriptionCard.source"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{descriptionCard.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{descriptionCard.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" >
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating" >Name</ion-label>
+                <ion-input
+                  placeholder="Enter name"
+                  clear-input="true"
+                  [(ngModel)]="descriptionCard.name"
+                  name="name"></ion-input>
+                <ion-note slot="helper">Enter a product name</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Description</ion-label>
+                <ion-input
+                  placeholder="Enter description"
+                  clear-input="true"
+                  [(ngModel)]="descriptionCard.description"
+                  name="description"></ion-input>
+                <ion-note slot="helper">Enter a description</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Source</ion-label>
+                <ion-input
+                  placeholder="Enter source"
+                  clear-input="true"
+                  [(ngModel)]="descriptionCard.source"
+                  name="source"></ion-input>
+                <ion-note slot="helper">Enter a source</ion-note>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
 
+        <ion-row>
+          <ion-col>
+            <div class="ion-text-center">
+              <ion-button color="danger" fill="outline" >
+                <ion-icon slot="start" name="close-outline"></ion-icon>Clear
+              </ion-button>
+
+              <ion-button type="submit" (click)="onClickAddButton()" class="ion-margin-horizontal">
+                <ion-icon name="add-outline" slot="start"></ion-icon>Add
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <ion-row>
+        <ion-col size="6" *ngFor="let card of descriptionCards">
+          <ion-card>
+            <ion-img  alt="input image" [src]="card.source"></ion-img>
+            <ion-card-header>
+              <ion-card-title>{{card.name}}</ion-card-title>
+            </ion-card-header>
             <ion-card-content>
-              Here's a small text description.
+              {{card.description}}
             </ion-card-content>
           </ion-card>
         </ion-col>
-        <ion-col>
-          <ion-card>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-            <ion-card-header>
-              <ion-card-title>Card Title</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-              Here's a small text description.
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-col>
-          <ion-list>
-            <ion-item>
-              <ion-label position="floating">Name</ion-label>
-              <ion-input placeholder="Enter name" clear-input="true"></ion-input>
-              <ion-note slot="helper">Enter a product name</ion-note>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Amount</ion-label>
-              <ion-input placeholder="Enter amount" type="number" clear-input="true" ></ion-input>
-              <ion-note slot="helper">Enter a number</ion-note>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <div class="ion-text-center">
-            <ion-button color="danger" fill="outline" >
-              <ion-icon slot="start" name="close-outline"></ion-icon>Clear
-            </ion-button>
-
-            <ion-button (click)="onClickAddButton()" class="ion-margin-horizontal">
-              <ion-icon name="add-outline" slot="start"></ion-icon>Add
-            </ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
     </ion-grid>
   </ion-content>
 </div>
