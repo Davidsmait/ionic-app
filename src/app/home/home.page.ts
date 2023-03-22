@@ -33,7 +33,7 @@ export class HomePage {
     this.isLoading = !this.isLoading
     // ion-toast
     const toast = await this.toastController.create({
-      message: 'product added',
+      message: 'image added',
       duration: 1500,
       position: "bottom"
     })

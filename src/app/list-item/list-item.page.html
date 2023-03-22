@@ -9,7 +9,27 @@
 
 <ion-content>
   <ion-grid>
+    <ng-container *ngIf="descriptionCards.length === 0">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header class="ion-text-center">
+              <ion-card-title > <ion-icon name="sad-outline" size="large"></ion-icon></ion-card-title>
+              <ion-card-subtitle>add an image so it doesn't look so lonely </ion-card-subtitle>
+            </ion-card-header>
+            <div class="ion-text-center">
+              <ion-button fill="clear">+ <ion-icon name="images-outline" ></ion-icon></ion-button>
+              <ion-button fill="clear">+<ion-icon name="camera-outline" ></ion-icon></ion-button>
+            </div>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ng-container>
+
     <ion-row>
+
+
       <ion-col size="6" *ngFor="let card of descriptionCards">
         <ion-card>
           <ion-img  alt="input image" [src]="card.source"></ion-img>
