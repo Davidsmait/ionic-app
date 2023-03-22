@@ -6,19 +6,18 @@ import { DescriptionCardModel } from '../interfaces/description-card.model'
   providedIn: 'root'
 })
 export class CardsDetailsService {
-  private descriptionCardsDetails = new Subject<DescriptionCardModel[]>()
+  private descriptionCards: DescriptionCardModel[] =[]
+  private descriptionCardsObservable = new Subject<DescriptionCardModel[]>()
 
   constructor() { }
 
-
   getCards() {
-    let cards : DescriptionCardModel[] = []
-    this.descriptionCardsDetails.subscribe((data) => {
-      console.log('data from service: ', data)
-      cards = data
-    })
-    console.log('cards from service:  ',cards)
-
-    return cards
+    return this.descriptionCards.slice()
   }
+
+  addCard(card: DescriptionCardModel){
+    this.descriptionCards.push(card)
+    this.descriptionCardsObservable.next(this.descriptionCards.slice())
+  }
+
 }

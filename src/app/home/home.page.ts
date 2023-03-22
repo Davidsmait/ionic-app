@@ -12,6 +12,7 @@ import { CardsDetailsService } from '../services/cards-details.service'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   descriptionCards : DescriptionCardModel[] = []
   descriptionCard = {
     name: '',
@@ -52,7 +53,10 @@ export class HomePage {
   onSubmit(form: NgForm){
     // console.log(form.form.value)
     const descriptionCardForm = form.value
+    console.log('form.value:  ',form.value)
     this.descriptionCards.push(descriptionCardForm)
+
+    this.cardDetail.addCard(form.value)
 
   }
 

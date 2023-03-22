@@ -54,13 +54,14 @@
         <ion-card>
           <ion-img  alt="live image" [src]="descriptionCard.source"></ion-img>
           <ion-card-header>
-            <ion-card-title>{{descriptionCard.name}}</ion-card-title>
+            <ion-card-title>{{descriptionCard.name || "Example name"}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            {{descriptionCard.description}}
+            {{descriptionCard.description || "Example description"}}
           </ion-card-content>
         </ion-card>
       </ion-col>
+
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" >
         <ion-row>
           <ion-col>

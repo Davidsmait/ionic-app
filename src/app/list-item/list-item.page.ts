@@ -13,7 +13,6 @@ export class ListItemPage implements OnInit {
   constructor(private cardsDetails: CardsDetailsService) { }
 
   ngOnInit() {
-    console.log(this.cardsDetails.getCards())
     this.descriptionCards = this.cardsDetails.getCards()
   }
 
