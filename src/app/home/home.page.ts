@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 
 import { DescriptionCardModel } from "../interfaces/description-card.model";
 import { CardsDetailsService } from '../services/cards-details.service'
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -24,6 +25,8 @@ export class HomePage {
   paragraph: string = 'Texto sin cambiar'
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private renderer: Renderer2,
     private toastController: ToastController,
     private cardDetail: CardsDetailsService) {}
@@ -35,7 +38,15 @@ export class HomePage {
     const toast = await this.toastController.create({
       message: 'image added',
       duration: 1500,
-      position: "bottom"
+      position: "middle",
+      buttons: [
+        {
+          icon: 'eye-outline',
+          handler: () => {
+            this.router.navigate(['/list-item'], {relativeTo: this.route})
+          }
+        }
+      ]
     })
 
     await toast.present();
