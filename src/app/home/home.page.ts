@@ -1,9 +1,9 @@
 import {Component, Renderer2} from '@angular/core';
 import {ToastController} from "@ionic/angular";
-import {log} from "@capacitor/assets/dist/util/log";
 import {NgForm} from "@angular/forms";
-import {DescriptionCardModel} from "../interfaces/description-card.model";
 
+import { DescriptionCardModel } from "../interfaces/description-card.model";
+import { CardsDetailsService } from '../services/cards-details.service'
 
 
 @Component({
@@ -20,14 +20,15 @@ export class HomePage {
   }
   isLoading = false
 
-
   paragraph: string = 'Texto sin cambiar'
 
-  constructor(private renderer: Renderer2, private toastController: ToastController) {
-  }
+  constructor(
+    private renderer: Renderer2,
+    private toastController: ToastController,
+    private cardDetail: CardsDetailsService) {}
 
   async onClickAddButton(){
-    this.paragraph = 'Texto cambiado'
+    this.paragraph = 'text changed'
     this.isLoading = !this.isLoading
     // ion-toast
     const toast = await this.toastController.create({

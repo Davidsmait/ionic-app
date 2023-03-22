@@ -111,19 +111,7 @@
         </ion-row>
       </form>
 
-      <ion-row>
-        <ion-col size="6" *ngFor="let card of descriptionCards">
-          <ion-card>
-            <ion-img  alt="input image" [src]="card.source"></ion-img>
-            <ion-card-header>
-              <ion-card-title>{{card.name}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              {{card.description}}
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
+
 
     </ion-grid>
   </ion-content>

@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
     <ion-title>list-item</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let card of descriptionCards">
+        <ion-card>
+          <ion-img  alt="input image" [src]="card.source"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{card.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{card.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
