@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
 import {Directory, Filesystem} from '@capacitor/filesystem';
-import {CardsDetailsService} from "./cards-details.service";
-import {DescriptionCardModel} from "../interfaces/description-card.model";
 
 export interface UserPhoto {
   filepath: string;
@@ -13,15 +11,11 @@ export interface UserPhoto {
   providedIn: 'root'
 })
 export class PhotoService {
-  cardItem : DescriptionCardModel = {
-    name: 'Test Name',
-    description: 'Test description',
-    source: ''
-  }
+
 
   public photos : UserPhoto[] = [];
 
-  constructor(private cardsDetails: CardsDetailsService) { }
+  constructor() { }
 
   public async addNewToGallery(){
     const capturedPhoto: Photo = await Camera.getPhoto({
@@ -35,12 +29,7 @@ export class PhotoService {
     const savedImageFile: UserPhoto = await this.savePhoto(capturedPhoto);
 
     this.photos.unshift(savedImageFile);
-    for (const photo of this.photos) {
-      this.cardItem.description = new Date().getTime() + '.jpeg'
-      this.cardItem.source = photo.webviewPath ?? ''
-      this.cardsDetails.addCard(this.cardItem)
 
-    }
     console.log('capturedPhoto:  ',capturedPhoto)
 
   }
