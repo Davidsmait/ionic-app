@@ -10,13 +10,13 @@ export class CardsDetailsService {
   private descriptionCardsObservable = new Subject<DescriptionCardModel[]>()
 
   constructor() { }
-
   getCards() {
+
     return this.descriptionCards.slice()
   }
 
   addCard(card: DescriptionCardModel){
-    this.descriptionCards.push(card)
+    this.descriptionCards.unshift(card)
     this.descriptionCardsObservable.next(this.descriptionCards.slice())
   }
 

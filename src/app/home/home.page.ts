@@ -2,7 +2,6 @@ import {Component, Renderer2} from '@angular/core';
 import {ToastController} from "@ionic/angular";
 import {NgForm} from "@angular/forms";
 
-import { DescriptionCardModel } from "../interfaces/description-card.model";
 import { CardsDetailsService } from '../services/cards-details.service'
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -14,7 +13,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class HomePage {
 
-  descriptionCards : DescriptionCardModel[] = []
   descriptionCard = {
     name: '',
     description: '',
@@ -22,7 +20,7 @@ export class HomePage {
   }
   isLoading = false
 
-  paragraph: string = 'Texto sin cambiar'
+  paragraph: string = 'changed text'
 
   constructor(
     private router: Router,
@@ -64,8 +62,6 @@ export class HomePage {
   onSubmit(form: NgForm){
     // console.log(form.form.value)
     const descriptionCardForm = form.value
-    console.log('form.value:  ',form.value)
-    this.descriptionCards.push(descriptionCardForm)
 
     this.cardDetail.addCard(form.value)
 

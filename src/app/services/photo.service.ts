@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
 import {Directory, Filesystem} from '@capacitor/filesystem';
-import {log} from "@capacitor/assets/dist/util/log";
+import {CardsDetailsService} from "./cards-details.service";
+import {DescriptionCardModel} from "../interfaces/description-card.model";
 
 export interface UserPhoto {
   filepath: string;
@@ -12,9 +13,15 @@ export interface UserPhoto {
   providedIn: 'root'
 })
 export class PhotoService {
+  cardItem : DescriptionCardModel = {
+    name: 'Test Name',
+    description: 'Test description',
+    source: ''
+  }
+
   public photos : UserPhoto[] = [];
 
-  constructor() { }
+  constructor(private cardsDetails: CardsDetailsService) { }
 
   public async addNewToGallery(){
     const capturedPhoto: Photo = await Camera.getPhoto({
@@ -28,6 +35,13 @@ export class PhotoService {
     const savedImageFile: UserPhoto = await this.savePhoto(capturedPhoto);
 
     this.photos.unshift(savedImageFile);
+    for (const photo of this.photos) {
+      this.cardItem.description = new Date().getTime() + '.jpeg'
+      this.cardItem.source = photo.webviewPath ?? ''
+      this.cardsDetails.addCard(this.cardItem)
+
+    }
+    console.log('capturedPhoto:  ',capturedPhoto)
 
   }
 
@@ -44,7 +58,7 @@ export class PhotoService {
       data: base64Data,
       directory: Directory.Data
     });
-    console.log('savedFile: ',savedFile)
+    // console.log('savedFile: ',savedFile)
 
 
     return {
@@ -54,7 +68,7 @@ export class PhotoService {
   }
 
   private async readAsBlob(photo: Photo) {
-    console.log('webPath: ',photo.webPath)
+    // console.log('webPath: ',photo.webPath)
     const response = await fetch(photo.webPath!);
     return await response.blob()
 
@@ -63,7 +77,7 @@ export class PhotoService {
   private async convertBlobToBase64(blob: Blob): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const reader: FileReader = new FileReader();
-      console.log('blob for convertBlobToBase64', blob)
+      // console.log('blob for convertBlobToBase64', blob)
 
       reader.readAsDataURL(blob);
       reader.onerror = reject;
