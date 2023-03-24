@@ -8,11 +8,10 @@ ion-toolbar{
 }
 
 ion-content{
-  --ion-background-color: 55% 100% url("../../assets/images/girls_walk_rain.png") no-repeat ;
-
+ --ion-background-color: 50% 10% url(../../assets/images/slidePhotos.jpg) no-repeat;
 }
 
-ion-card{
+.form--card{
   margin: 0;
   width: 100vw;
   position: absolute;
