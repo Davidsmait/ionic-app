@@ -1,0 +1,37 @@
+
+ion-header{
+}
+
+ion-toolbar{
+  --ion-toolbar-background-color: transparent;
+  --ion-color-base: transparent !important;
+}
+
+ion-content{
+  --ion-background-color: 55% 100% url("../../assets/images/girls_walk_rain.png") no-repeat ;
+
+}
+
+ion-card{
+  margin: 0;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+ion-item{
+  --background: #373737;
+  --color: #fff;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 0;
+  //
+  //--padding-bottom: 10px;
+  //--padding-end: 10px;
+  //--padding-start: 10px;
+  //--padding-top: 10px;
+}
+
+ion-list{
+  background: #373737;
+}

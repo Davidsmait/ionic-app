@@ -1,53 +1,61 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header translucent="true" class="ion-no-border">
+  <ion-toolbar style="opacity:.5">
     <ion-buttons slot="start">
-      <ion-back-button (click)="onBackUrl()" defaultHref="#"></ion-back-button>
+      <ion-back-button  (click)="onBackUrl()" defaultHref="#"></ion-back-button>
     </ion-buttons>
-    <ion-title>login</ion-title>
   </ion-toolbar>
+<!--  <ion-img src="../../assets/images/girls_walk_rain.png"></ion-img>-->
 </ion-header>
 
-<ion-content class="ion-padding">
-  <form (ngSubmit)="onLogin()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Name</ion-label>
-        <ion-input
-          placeholder="Enter name"
-          [clearInput]="true"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked" >Email input</ion-label>
-        <ion-input
-          type="email"
-          placeholder="email@domain.com"
-          [clearInput]="true"></ion-input>
-        <ion-note slot="helper">Enter a valid email</ion-note>
-        <ion-note slot="error">Invalid email</ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked" >Password</ion-label>
-        <ion-input
-          [type]="'password'"
-          [clearOnEdit]="true"
-        ></ion-input>
-        <ion-note slot="helper">Enter a valid password</ion-note>
-        <ion-note slot="error">Invalid password</ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-checkbox slot="start"></ion-checkbox>
-        <ion-label>I agree to the terms and conditions</ion-label>
-      </ion-item>
-    </ion-list>
+<ion-content fullscreen="true" style="background: #1a1a1a">
+  <ion-card class="ion-align-self-center">
+    <form (ngSubmit)="onLogin()" >
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" >Name</ion-label>
+          <ion-input
+            placeholder="Enter name"
+            [clearInput]="true"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" >Email input</ion-label>
+          <ion-input
+            type="email"
+            placeholder="email@domain.com"
+            [clearInput]="true"></ion-input>
+          <ion-note slot="helper">Enter a valid email</ion-note>
+          <ion-note slot="error">Invalid email</ion-note>
+        </ion-item>
+      </ion-list>
 
-      <ion-button
-        color="tertiary"
-        slot="end"
-        expand="block"
-        class="ion-margin">
-        <ion-icon slot="end" name="send-outline"></ion-icon>
-        Log
-      </ion-button>
-  </form>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" >Password</ion-label>
+          <ion-input
+            [type]="'password'"
+            [clearOnEdit]="true"
+          ></ion-input>
+          <ion-note slot="helper">Enter a valid password</ion-note>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-checkbox slot="start"></ion-checkbox>
+          <ion-label>I agree to the terms and conditions</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-button
+          color="tertiary"
+          slot="end"
+          expand="block"
+          class="ion-margin">
+          Sign Up
+        </ion-button>
+      </ion-list>
+    </form>
+  </ion-card>
 
 </ion-content>
