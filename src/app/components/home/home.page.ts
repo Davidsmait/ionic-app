@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 
 import { CardsDetailsService } from '../../services/cards-details.service'
 import {ActivatedRoute, Router} from "@angular/router";
+import {PhotoService} from "../../services/photo.service";
 
 
 @Component({
@@ -20,9 +21,10 @@ export class HomePage {
   }
   isLoading = false
 
-  paragraph: string = 'changed text'
 
   constructor(
+    private cardsDetailsService : CardsDetailsService,
+    private photoService: PhotoService,
     private router: Router,
     private route: ActivatedRoute,
     private renderer: Renderer2,
@@ -30,7 +32,6 @@ export class HomePage {
     private cardDetail: CardsDetailsService) {}
 
   async onClickAddButton(){
-    this.paragraph = 'text changed'
     this.isLoading = !this.isLoading
     // ion-toast
     const toast = await this.toastController.create({
@@ -60,11 +61,16 @@ export class HomePage {
   }
 
   onSubmit(form: NgForm){
-    // console.log(form.form.value)
-    const descriptionCardForm = form.value
+    console.log(form.form.value)
 
     this.cardDetail.addCard(form.value)
 
+  }
+
+  async onSelectFromDevice(){
+    await this.photoService.takeFromGallery().then((data) => {
+      this.descriptionCard.source = data.base64Data
+    })
   }
 
 }

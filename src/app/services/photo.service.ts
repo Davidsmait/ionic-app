@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Camera, CameraResultType, CameraSource, Photo} from "@capacitor/camera";
+import {Camera, CameraResultType, CameraSource, GalleryPhotos, Photo} from "@capacitor/camera";
 import {Directory, Filesystem} from '@capacitor/filesystem';
 
 export interface UserPhoto {
@@ -18,6 +18,23 @@ export class PhotoService {
 
   constructor() { }
 
+  public async takeFromGallery(){
+    const image: GalleryPhotos = await Camera.pickImages({
+      quality: 90,
+      limit: 1
+    })
+
+    const fileName = new Date().getTime() + '.jpeg';
+    const imageBlob = await fetch(image.photos[0].webPath!)
+    const base64Data = await this.convertBlobToBase64(await imageBlob.blob())
+
+    return {
+      fileName: fileName,
+      base64Data: base64Data
+    }
+
+  }
+
   public async addNewToGallery(){
     const capturedPhoto: Photo = await Camera.getPhoto({
       quality: 90,
@@ -27,10 +44,7 @@ export class PhotoService {
     })
 
     const savedImageFile: UserPhoto = await this.savePhoto(capturedPhoto);
-
     this.photos.unshift(savedImageFile);
-
-    // console.log('capturedPhoto:  ',capturedPhoto)
   }
 
   public get64(){
@@ -42,7 +56,7 @@ export class PhotoService {
     const base64Data = await this.convertBlobToBase64(imageBlob)
     // console.log('photo: ',photo)
     // console.log('imageBlob: ',imageBlob)
-    console.log('base64Data: ', base64Data)
+    // console.log('base64Data: ', base64Data)
     this.base64 = base64Data
     const fileName = new Date().getTime() + '.jpeg';
 
