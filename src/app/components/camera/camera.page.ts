@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PhotoService} from "../../services/photo.service";
 import {BackUrlService} from "../../services/back-url.service";
+import {CardsDetailsService} from "../../services/cards-details.service";
 
 
 const IMAGE_DIR = 'stored-images'
@@ -19,6 +20,7 @@ interface LocalFile {
 export class CameraPage implements OnInit {
   imageUrl: any
   constructor(
+    private cardsDetails: CardsDetailsService,
     private backUrlService: BackUrlService,
     public photoService: PhotoService) { }
 
@@ -40,6 +42,11 @@ export class CameraPage implements OnInit {
     // }
     //
     // await getData()
+    await this.cardsDetails.addCard(
+      {
+        name:'',
+        description: '',
+        source:this.photoService.get64()})
   }
 
   onBackUrl(){

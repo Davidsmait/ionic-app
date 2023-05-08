@@ -12,6 +12,7 @@ export interface UserPhoto {
 })
 export class PhotoService {
 
+  private base64: string = ''
 
   public photos : UserPhoto[] = [];
 
@@ -25,13 +26,15 @@ export class PhotoService {
       source: CameraSource.Camera
     })
 
-
     const savedImageFile: UserPhoto = await this.savePhoto(capturedPhoto);
 
     this.photos.unshift(savedImageFile);
 
-    console.log('capturedPhoto:  ',capturedPhoto)
+    // console.log('capturedPhoto:  ',capturedPhoto)
+  }
 
+  public get64(){
+    return this.base64.slice()
   }
 
   private async savePhoto(photo: Photo): Promise<UserPhoto>{
@@ -39,7 +42,8 @@ export class PhotoService {
     const base64Data = await this.convertBlobToBase64(imageBlob)
     // console.log('photo: ',photo)
     // console.log('imageBlob: ',imageBlob)
-    // console.log('base64Data: ', base64Data)
+    console.log('base64Data: ', base64Data)
+    this.base64 = base64Data
     const fileName = new Date().getTime() + '.jpeg';
 
     const savedFile = await Filesystem.writeFile({
