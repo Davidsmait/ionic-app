@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BackUrlService} from "../services/back-url.service";
+import {BackUrlService} from "../../services/back-url.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form',
@@ -8,7 +9,10 @@ import {BackUrlService} from "../services/back-url.service";
 })
 export class FormPage implements OnInit {
 
-  constructor(private backUrlService: BackUrlService) { }
+  constructor(
+    private router: Router,
+    private backUrlService: BackUrlService
+  ) { }
 
   ngOnInit() {}
 
@@ -19,4 +23,6 @@ export class FormPage implements OnInit {
   onBackUrl(){
     this.backUrlService.backUrl()
   }
+
+
 }

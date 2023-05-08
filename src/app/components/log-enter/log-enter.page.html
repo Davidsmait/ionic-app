@@ -1,0 +1,48 @@
+<ion-content class="ion-align-items-center  ion-justify-content-center ion-text-center ion-align-self-center">
+
+
+
+  <div class="title">Hi!</div>
+  <div class="subtitle">welcome</div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          shape="round"
+          size="large"
+          color="primary"
+          (click)="onClickArrow()"
+          class="button button-first">
+
+          <ion-icon
+            slot="icon-only"
+            name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          shape="round"
+          size="large"
+          color="dark"
+          (click)="onClickEmailArrow()"
+          class="button">
+          <ion-icon
+            size="small"
+            slot="icon-only"
+            name="person-outline"></ion-icon>
+          <ion-icon
+            size="small"
+            slot="icon-only"
+            name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

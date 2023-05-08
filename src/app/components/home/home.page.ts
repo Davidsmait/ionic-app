@@ -2,7 +2,7 @@ import {Component, Renderer2} from '@angular/core';
 import {ToastController} from "@ionic/angular";
 import {NgForm} from "@angular/forms";
 
-import { CardsDetailsService } from '../services/cards-details.service'
+import { CardsDetailsService } from '../../services/cards-details.service'
 import {ActivatedRoute, Router} from "@angular/router";
 
 

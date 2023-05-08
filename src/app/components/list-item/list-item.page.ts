@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CardsDetailsService} from "../services/cards-details.service";
-import { DescriptionCardModel } from '../interfaces/description-card.model'
-import {BackUrlService} from "../services/back-url.service";
+import {CardsDetailsService} from "../../services/cards-details.service";
+import { DescriptionCardModel } from '../../interfaces/description-card.model'
+import {BackUrlService} from "../../services/back-url.service";
 
 @Component({
   selector: 'app-list-item',
