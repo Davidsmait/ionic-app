@@ -1,10 +1,12 @@
-import {Component, Renderer2} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {ToastController} from "@ionic/angular";
 import {NgForm} from "@angular/forms";
 
 import { CardsDetailsService } from '../../services/cards-details.service'
 import {ActivatedRoute, Router} from "@angular/router";
 import {PhotoService} from "../../services/photo.service";
+import {AkkaApiService} from "../../services/akka-api.service";
+import {log} from "util";
 
 
 @Component({
@@ -12,7 +14,7 @@ import {PhotoService} from "../../services/photo.service";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   descriptionCard = {
     name: '',
@@ -23,13 +25,21 @@ export class HomePage {
 
 
   constructor(
+    private akkaApiService: AkkaApiService,
     private cardsDetailsService : CardsDetailsService,
     private photoService: PhotoService,
     private router: Router,
     private route: ActivatedRoute,
     private renderer: Renderer2,
     private toastController: ToastController,
-    private cardDetail: CardsDetailsService) {}
+    private cardDetail: CardsDetailsService) {
+  }
+
+  ngOnInit() {
+    this.akkaApiService.getHello()
+
+    this.akkaApiService.postHello()
+  }
 
   async onClickAddButton(){
     this.isLoading = !this.isLoading

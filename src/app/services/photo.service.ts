@@ -27,6 +27,7 @@ export class PhotoService {
     const fileName = new Date().getTime() + '.jpeg';
     const imageBlob = await fetch(image.photos[0].webPath!)
     const base64Data = await this.convertBlobToBase64(await imageBlob.blob())
+    console.log(base64Data)
 
     return {
       fileName: fileName,
@@ -54,9 +55,6 @@ export class PhotoService {
   private async savePhoto(photo: Photo): Promise<UserPhoto>{
     const imageBlob: Blob = await this.readAsBlob(photo)
     const base64Data = await this.convertBlobToBase64(imageBlob)
-    // console.log('photo: ',photo)
-    // console.log('imageBlob: ',imageBlob)
-    // console.log('base64Data: ', base64Data)
     this.base64 = base64Data
     const fileName = new Date().getTime() + '.jpeg';
 
@@ -65,8 +63,6 @@ export class PhotoService {
       data: base64Data,
       directory: Directory.Data
     });
-    // console.log('savedFile: ',savedFile)
-
 
     return {
       filepath: fileName,
@@ -75,24 +71,19 @@ export class PhotoService {
   }
 
   private async readAsBlob(photo: Photo) {
-    // console.log('webPath: ',photo.webPath)
     const response = await fetch(photo.webPath!);
     return await response.blob()
-
   }
 
   private async convertBlobToBase64(blob: Blob): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const reader: FileReader = new FileReader();
-      // console.log('blob for convertBlobToBase64', blob)
-
       reader.readAsDataURL(blob);
       reader.onerror = reject;
 
       reader.onload = () => {
         resolve(reader.result as string);
       };
-
 
     });
   }
