@@ -36,7 +36,7 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit() {
-    this.akkaApiService.getHello()
+    // this.akkaApiService.getHello()
 
     this.akkaApiService.postHello()
   }
@@ -71,8 +71,8 @@ export class HomePage implements OnInit{
   }
 
   onSubmit(form: NgForm){
-    console.log(form.form.value)
-
+    // console.log(form.form.value)
+    this.akkaApiService.postCardImage(form.form.value)
     this.cardDetail.addCard(form.value)
 
   }

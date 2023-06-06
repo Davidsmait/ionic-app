@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {DescriptionCardModel} from "../interfaces/description-card.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AkkaApiService {
     mensaje: 'Hola desde Angular'
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient ) { }
 
   public getHello(): any {
     return this.http.get(this.apiUrlGet + 'hello',{responseType: 'json'})
@@ -37,4 +39,18 @@ export class AkkaApiService {
       }
     )
   }
+
+  postCardImage(cardDataObject: DescriptionCardModel){
+    return this.http.post(
+      this.apiUrlPost + "postCard",
+      cardDataObject,
+      {responseType: 'text'}
+    ).subscribe({
+      next: value => console.log(value),
+      error: err => console.log("erooooor",err),
+      complete: () => console.log("card POST completed")
+      }
+    )
+  }
+
 }
