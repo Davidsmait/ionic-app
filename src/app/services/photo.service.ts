@@ -21,7 +21,7 @@ export class PhotoService {
   public async takeFromGallery(){
     const image: GalleryPhotos = await Camera.pickImages({
       quality: 90,
-      limit: 1
+      limit: 1,
     })
 
     const fileName = new Date().getTime() + '.jpeg';
@@ -41,7 +41,7 @@ export class PhotoService {
       quality: 90,
       allowEditing: true,
       resultType: CameraResultType.Uri,
-      source: CameraSource.Camera
+      source: CameraSource.Camera,
     })
 
     const savedImageFile: UserPhoto = await this.savePhoto(capturedPhoto);
