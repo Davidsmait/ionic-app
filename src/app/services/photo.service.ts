@@ -20,7 +20,7 @@ export class PhotoService {
 
   public async takeFromGallery(){
     const image: GalleryPhotos = await Camera.pickImages({
-      quality: 90,
+      quality: 100,
       limit: 1,
     })
 
