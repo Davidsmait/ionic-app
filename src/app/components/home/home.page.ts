@@ -38,7 +38,7 @@ export class HomePage implements OnInit{
   ngOnInit() {
     // this.akkaApiService.getHello()
 
-    this.akkaApiService.postHello()
+    // this.akkaApiService.postHello()
   }
 
   async onClickAddButton(){
@@ -83,4 +83,21 @@ export class HomePage implements OnInit{
     })
   }
 
+
+  selectedFile: File | null = null;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+    // console.log(event.target.files[0])
+    console.log(event)
+  }
+
+  upload() {
+    if (this.selectedFile) {
+      // Aquí puedes realizar alguna acción con el archivo seleccionado, como enviarlo a un servidor o procesarlo localmente
+      console.log(this.selectedFile);
+    } else {
+      console.log('No se ha seleccionado ningún archivo.');
+    }
+  }
 }
