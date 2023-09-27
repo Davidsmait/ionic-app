@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PhotoService} from "../../services/photo.service";
 import {AkkaApiService} from "../../services/akka-api.service";
 import {log} from "util";
+import {HttpClient} from "@angular/common/http";
+import {delay} from "rxjs";
 
 
 @Component({
@@ -25,6 +27,7 @@ export class HomePage implements OnInit{
 
 
   constructor(
+    private http: HttpClient,
     private akkaApiService: AkkaApiService,
     private cardsDetailsService : CardsDetailsService,
     private photoService: PhotoService,
@@ -33,9 +36,12 @@ export class HomePage implements OnInit{
     private renderer: Renderer2,
     private toastController: ToastController,
     private cardDetail: CardsDetailsService) {
+
   }
 
   ngOnInit() {
+
+
     // this.akkaApiService.getHello()
 
     // this.akkaApiService.postHello()
