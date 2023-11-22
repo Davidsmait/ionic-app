@@ -40,3 +40,8 @@ ion-menu::part(container) {
 
 
 
+@media screen and (min-width: 600px) {
+  .media-screen-container {
+    color: #ff5b71;
+  }
+}
